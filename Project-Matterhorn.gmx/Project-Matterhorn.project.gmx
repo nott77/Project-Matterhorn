@@ -45,6 +45,7 @@
       <sprite>sprites\sprSlopeRightMask</sprite>
       <sprite>sprites\sprMudMask</sprite>
       <sprite>sprites\sprDirtBlock</sprite>
+      <sprite>sprites\sSlope</sprite>
       <sprite>sprites\sprDirtSlopeLeft</sprite>
       <sprite>sprites\sprDirtSlopeRight</sprite>
       <sprite>sprites\sprMudBlock</sprite>
@@ -118,6 +119,9 @@
       <sprite>sprites\sprSpringRight</sprite>
       <sprite>sprites\sprSpringLeft</sprite>
       <sprite>sprites\sprSpikes</sprite>
+    </sprites>
+    <sprites name="Ori">
+      <sprite>sprites\sOri</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -256,6 +260,7 @@
       <objects name="Solids">
         <object>objects\objSolid</object>
         <object>objects\objDirtBlock</object>
+        <object>objects\oSlope</object>
         <object>objects\objDirtSlopeLeft</object>
         <object>objects\objDirtSlopeRight</object>
         <object>objects\objIceBlock</object>
@@ -290,6 +295,7 @@
       <objects name="Liquid">
         <object>objects\objLiquid</object>
         <object>objects\objWater</object>
+        <object>objects\objWater2</object>
       </objects>
       <object>objects\objSpikes</object>
       <object>objects\objPlatformReverse</object>
@@ -305,10 +311,11 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\roomStart</room>
+    <room>rooms\room6</room>
+    <room>rooms\roomLevel</room>
     <room>rooms\roomMenu</room>
     <room>rooms\roomMultiMenu</room>
     <room>rooms\roomMultiLevel</room>
-    <room>rooms\roomLevel</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
