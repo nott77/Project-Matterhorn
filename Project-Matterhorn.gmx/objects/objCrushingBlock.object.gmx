@@ -48,7 +48,7 @@ var p = 4;
 repeat(128)
 {
     y2 += p;
-    if (collision_rectangle(x1, y1, x2, y2, objSolid, true, true))
+    if (collision_rectangle(x1, y1, x2, y2, objSolid, true, true) != noone)
     {
         break;
     }
@@ -105,7 +105,7 @@ switch (state)
     case 0:
         image_index = 0;
         //check for entities to crush
-        if (collision_rectangle(x1, y1, x2, y2, target, true, true))
+        if (collision_rectangle(x1, y1, x2, y2, target, true, true) != noone)
         {
             state = 1;
             charge_timer = 25;

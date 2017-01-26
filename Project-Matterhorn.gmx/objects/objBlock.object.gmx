@@ -28,6 +28,7 @@
             <string>///Setup
 breakable = true;
 stuck = ds_list_create();
+on_top = ds_list_create();
 image_speed = 0;
 alarm[0] = 1;
 piece_sprite = noone; //the sprite of the particle created
@@ -39,7 +40,6 @@ hsp = 0;
 hsp_max = 5;
 cx = 0;
 cy = 0;
-on_top = ds_list_create();
 fallthrough = false;
 semi_solid = false;
 collide_x = false;
@@ -74,10 +74,10 @@ can_crush = false; //can we crush entities?
 if (piece_sprite != noone)
 repeat(4)
 {
-    ///get a random x &amp; y position within the block
+    //get a random x &amp; y position within the block
     var px = irandom_range(bbox_left, bbox_right);
     var py = irandom_range(bbox_top, bbox_bottom);
-    ///create the piece
+    //create the piece
     var a = instance_create(px, py, objPieceTrail);
     a.image_alpha = random_range(1.5, 4);
     a.sprite_index = piece_sprite;
@@ -104,9 +104,13 @@ repeat(4)
           <argument>
             <kind>1</kind>
             <string>///Destroy any objects which are "stuck in" this block
-for (var i = 0; i &lt; ds_list_size(stuck); i++)
+var size = ds_list_size(stuck);
+for (var i = 0; i &lt; size; i++)
 {
-    with (stuck[|i]) instance_destroy();
+    with (stuck[|i])
+    {
+        instance_destroy();
+    }
 }
 
 
@@ -132,8 +136,15 @@ for (var i = 0; i &lt; ds_list_size(stuck); i++)
           <argument>
             <kind>1</kind>
             <string>///Free list memory
-ds_list_destroy(stuck);
-ds_list_destroy(on_top);
+if (ds_exists(stuck, ds_type_list))
+{
+    ds_list_destroy(stuck);
+}
+if (ds_exists(on_top, ds_type_list))
+{
+    ds_list_destroy(on_top);
+}
+
 
 </string>
           </argument>
@@ -206,6 +217,7 @@ if (hsp != 0 || vsp != 0)
     cy -= vspNew;
     
     ///Get a list of all entities on top of this block
+    ds_list_destroy(on_top);
     on_top = block_get_entities(hspNew, vspNew, hspNew, vspNew);
     
     ///Horizontal movement
@@ -252,10 +264,40 @@ if (hsp != 0 || vsp != 0)
     
     ///Move all of the entities on top of this block
     block_move_entities();
-    
-    ///Clear the on_top list of entities
-    ds_list_clear(on_top);
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Free list memory
+if (ds_exists(stuck, ds_type_list))
+{
+    ds_list_destroy(stuck);
+}
+if (ds_exists(on_top, ds_type_list))
+{
+    ds_list_destroy(on_top);
+}
+
 
 </string>
           </argument>

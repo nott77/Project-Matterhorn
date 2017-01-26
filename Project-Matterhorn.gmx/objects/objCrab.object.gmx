@@ -128,7 +128,7 @@ a.facing = facing;
           <argument>
             <kind>1</kind>
             <string>///Movement
-if (on_ground())
+if (ground)
 {
     var xx = 0;
     var ahsp = abs(hsp);
@@ -146,14 +146,12 @@ if (on_ground())
     {
         turn = true;
     }
-    
     ///Turn
     if (turn)
     {
         facing *= -1;
         hsp = 0;
     }
-    
     ///Movement depending on direction
     move_x = facing;
 }

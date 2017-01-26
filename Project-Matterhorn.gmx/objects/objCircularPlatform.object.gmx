@@ -79,6 +79,7 @@ var h = xnew-x;
 var v = ynew-y;
 
 ///Get list of entities on top of the block
+ds_list_destroy(on_top);
 on_top = block_get_entities(h, v, h, v);
 
 ///Move
@@ -90,9 +91,6 @@ block_move_entities();
 
 ///Accelerate
 spd = clamp(spd+acc, -max_spd, max_spd);
-
-///Clear list of entities on top
-ds_list_clear(on_top);
 
 </string>
           </argument>

@@ -52,10 +52,12 @@ background_index = background1;
 instance_create(0, 0, objTransition);
 var h = instance_create(0, 0, objHUD);
 var c = instance_create(0, 0, objCamera);
-var p1 = instance_create(objPlayerSpawnPoint.x, objPlayerSpawnPoint.y, objPlayer1);
-h.target = p1;
-c.target = p1;
-
+if (instance_exists(objPlayerSpawnPoint))
+{
+    var p1 = instance_create(objPlayerSpawnPoint.x, objPlayerSpawnPoint.y, objPlayer1);
+    h.target = p1;
+    c.target = p1;
+}
 
 
 

@@ -304,7 +304,7 @@
     <instance objName="objPlayerSpawnPoint" x="176" y="96" name="inst_32EB101A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlatform" x="280" y="160" name="inst_77F67A02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlatform" x="296" y="160" name="inst_D2D0FF71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlatform" x="464" y="200" name="inst_30317766" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlatform" x="432" y="160" name="inst_30317766" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStoneBlock" x="16" y="80" name="inst_A32AB6C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStoneBlock" x="0" y="96" name="inst_11D7D5A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStoneBlock" x="96" y="96" name="inst_07A7824A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -331,8 +331,6 @@
     <instance objName="objDirtSlopeRight" x="496" y="208" name="inst_84406026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDirtSlopeRight" x="464" y="32" name="inst_D103C900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDirtSlopeLeft" x="576" y="32" name="inst_8CA3B1AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpringUp" x="464" y="184" name="inst_A1E19F49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSlope" x="376" y="160" name="inst_4570077A" locked="0" code="" scaleX="0.6875" scaleY="0.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

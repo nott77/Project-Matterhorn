@@ -424,18 +424,15 @@ switch (state)
             }
         }
         //Move towards the centre of the ladder
-        if (climb)
+        var ladder = instance_place(x, y, objLadder);
+        if (ladder != noone)
         {
-            var ladder = instance_place(x, y, objLadder);
-            if (ladder != noone)
-            {
-                x = approach(x, ladder.x, 0.5);
-            }
-            else
-            {
-                state = state.normal;
-                break;
-            }
+            x = approach(x, ladder.x, 0.5);
+        }
+        else
+        {
+            state = state.normal;
+            break;
         }
         break;
     case state.ledge_grab:
@@ -786,8 +783,6 @@ wrap(8);
           <argument>
             <kind>1</kind>
             <string>///Draw entity
-///Only draw if we're within the view!
-var b = 8;
 ///Flash if we're currently invincible
 if (invincible &lt;= 0 || (floor(invincible/5) mod 3 != 0))
 {

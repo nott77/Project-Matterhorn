@@ -151,7 +151,7 @@ if (jump_timer &lt; 0)
     jump_timer = random_range(120, 180);
     image_speed = 0.3;
     ///Check if we're on the ground... can't jump otherwise!
-    if (on_ground() || in_water)
+    if (ground || in_water)
     {
         ///Find the closest target
         target = instance_nearest(x, y, objPlayer);

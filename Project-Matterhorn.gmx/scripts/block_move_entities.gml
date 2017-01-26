@@ -11,7 +11,8 @@ var entity_collide = false; //collided with entity?
 //move each entity. If the entity cannot be moved because
 //there's another block in the way, the entity will be crushed!
 //(unless this is a semi-solid platform)
-for (var i = 0; i < ds_list_size(on_top); i++)
+var size = ds_list_size(on_top);
+for (var i = 0; i < size; i++)
 {
     var inst = on_top[|i]; //get the current instance
     if (inst != noone) //ignore it if the instance is noone
@@ -80,28 +81,31 @@ if (entity_collide)
 else
 //Move all of the stuck objects with the block
 //only move them if not entity_collide
-for (var i = 0; i < ds_list_size(stuck); i++)
 {
-    var inst = stuck[|i];
-    var move_inst = true;
-    //Loop through the on_top list to make sure the
-    //instance is not a part of both lists.
-    //If the instance is in the on_top list then
-    //it will already have been moved.
-    for (var j = 0; j < ds_list_size(on_top); j++)
+    var size = ds_list_size(stuck);
+    for (var i = 0; i < size; i++)
     {
-        if (on_top[|j] == inst)
+        var inst = stuck[|i];
+        var move_inst = true;
+        //Loop through the on_top list to make sure the
+        //instance is not a part of both lists.
+        //If the instance is in the on_top list then
+        //it will already have been moved.
+        var j = ds_list_find_index(on_top, inst);
+        if (j != -1)
         {
             //Don't move the instance if it's
             //part of the on_top list
             move_inst = false; 
         }
-    }
-    if (move_inst)
-    with (inst)
-    {
-        x += xadd;
-        y += yadd;
+        if (move_inst)
+        {
+            with (inst)
+            {
+                x += xadd;
+                y += yadd;
+            }
+        }
     }
 }
 

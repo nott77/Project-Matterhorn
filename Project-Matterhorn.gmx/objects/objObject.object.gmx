@@ -200,6 +200,9 @@ else
     y += vsp;
 }
 
+///Reset moving platform variable
+moving_platforms = false;
+
 </string>
           </argument>
         </arguments>
