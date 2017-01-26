@@ -5,9 +5,76 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprites name="Player">
+      <sprite>sprites\s_player</sprite>
+    </sprites>
+    <sprites name="GM_Icons">
+      <sprite>sprites\ico_control</sprite>
+      <sprite>sprites\ico_parent</sprite>
+      <sprite>sprites\ico_camera</sprite>
+      <sprite>sprites\ico_target</sprite>
+      <sprite>sprites\ico_death</sprite>
+      <sprite>sprites\ico_world</sprite>
+      <sprite>sprites\ico_arrow</sprite>
+      <sprite>sprites\ico_mountain</sprite>
+      <sprite>sprites\ico_heart</sprite>
+      <sprite>sprites\ico_map</sprite>
+      <sprite>sprites\ico_multi_level</sprite>
+    </sprites>
+    <sprite>sprites\s_block</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="Game INI">
+      <script>scripts\scr_global_ini.gml</script>
+      <script>scripts\scr_settings_ini.gml</script>
+      <script>scripts\scr_gamepad_ini.gml</script>
+      <script>scripts\scr_enum_ini.gml</script>
+      <script>scripts\scr_load_settings.gml</script>
+      <script>scripts\scr_save_settings.gml</script>
+      <script>scripts\scr_default_settings.gml</script>
+    </scripts>
+    <scripts name="Movement &amp; Collision">
+      <script>scripts\scr_movement.gml</script>
+      <script>scripts\scr_check_collision.gml</script>
+      <script>scripts\scr_on_ground.gml</script>
+      <script>scripts\scr_approach.gml</script>
+      <script>scripts\scr_smooth_approach.gml</script>
+      <script>scripts\scr_collision_rectangle_multiple.gml</script>
+    </scripts>
+    <script>scripts\scr_env_get_entities.gml</script>
+    <script>scripts\scr_env_move_entities.gml</script>
+  </scripts>
+  <objects name="objects">
+    <objects name="System">
+      <object>objects\sys_game_ini</object>
+      <object>objects\sys_game_control</object>
+      <object>objects\sys_camera</object>
+    </objects>
+    <object>objects\par_object</object>
+    <objects name="Entities">
+      <object>objects\par_entity</object>
+      <objects name="Player">
+        <object>objects\o_player</object>
+      </objects>
+    </objects>
+    <objects name="Enviornment">
+      <object>objects\par_env</object>
+      <objects name="Solids">
+        <object>objects\par_solid</object>
+        <object>objects\o_block</object>
+      </objects>
+      <objects name="Semi Solids">
+        <object>objects\o_semi_solid</object>
+      </objects>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_INI</room>
+    <room>rooms\rm_test</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
