@@ -260,8 +260,8 @@ switch (state)
             move_jump = 0;
         }
         //Start climbing
-        if (climb_up &amp;&amp; place_meeting(x, y-1, objLadder) &amp;&amp; !place_meeting(x, y-1, par_solid)) ||
-           (climb_down &amp;&amp; place_meeting(x, y+1, objLadder) &amp;&amp; !place_meeting(x, y+1, par_solid))
+        if (climb_up &amp;&amp; place_meeting(x, y-1, o_ladder) &amp;&amp; !place_meeting(x, y-1, par_solid)) ||
+           (climb_down &amp;&amp; place_meeting(x, y+1, o_ladder) &amp;&amp; !place_meeting(x, y+1, par_solid))
         {
             state = state.climbing;
         }
@@ -387,7 +387,7 @@ switch (state)
         if (climb_up)
         {
             var a = climb_up_speed;
-            if (!place_meeting(x, y-a, objLadder))
+            if (!place_meeting(x, y-a, o_ladder))
             {
                 state = state.normal;
             }
@@ -401,7 +401,7 @@ switch (state)
         if (climb_down)
         {
             var a = climb_down_speed;
-            if (!place_meeting(x, y+a, objLadder) ||
+            if (!place_meeting(x, y+a, o_ladder) ||
                  place_meeting(x, y+a, par_solid))
             {
                 state = state.normal;
@@ -413,7 +413,7 @@ switch (state)
             }
         }
         //Move towards the centre of the ladder
-        var ladder = instance_place(x, y, objLadder);
+        var ladder = instance_place(x, y, o_ladder);
         if (ladder != noone)
         {
             x = scr_approach(x, ladder.x, 0.5);
@@ -534,7 +534,7 @@ if (can_grab &amp;&amp; vsp &gt; 0 &amp;&amp; !fallthrough &amp;&amp; move_x != 
             if (move_x &lt; 0) target_gx = block.bbox_right;
             target_gy = block.bbox_top;
             //Check if the grab points are in the correct positions
-            if (gy &gt; target_gy-3 &amp;&amp; gy &lt; target_gy+3 &amp;&amp; !place_meeting(x, y, objSemiSolid))
+            if (gy &gt; target_gy-3 &amp;&amp; gy &lt; target_gy+3 &amp;&amp; !place_meeting(x, y, o_semi_solid))
             {
                 state = state.ledge_grab;
                 //Set x &amp; y positions
@@ -578,6 +578,53 @@ move_factor = 1;
 jump_factor = 1;
 
 event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw entity
+///Flash if we're currently invincible
+if (invincible &lt;= 0 || (floor(invincible/5) mod 3 != 0))
+{
+    ///Flash white if we've recently been hit
+    if (white &gt; 0)
+    {
+        d3d_set_fog(true, c_white, 0, 1);
+    }
+    ///Draw the entity's sprite
+    draw_sprite_ext(sprite_index, -1, x, y, xscale*facing, yscale, image_angle, image_blend, image_alpha);
+    if (white &gt; 0)
+    {
+        d3d_set_fog(0, 0, 0, 0);
+    }
+}
+
+///For test mode, draw a box showing the entity's bounding box
+if (global.test_mode)
+{
+    draw_set_color(c_red);
+    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+    draw_set_color(c_white);
+    draw_text(x, bbox_top-4, state);
+}
 </string>
           </argument>
         </arguments>

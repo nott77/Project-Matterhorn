@@ -66,7 +66,7 @@ pad_shoot = gp_face2;
 pad_attack = gp_face3;
 
 ///// Set Move variables
-move_speed = 2;
+move_speed = 3;
 
 ///Friction &amp; gravity
 air_frict = 0.08;
@@ -82,9 +82,9 @@ ground_acc = 0.3;
 ///Jumping!
 jump_height = 3.6;
 djump_height = 3;
-jumps_max = 1;
-wall_jump = true;
-can_grab = true;
+jumps_max = 2;
+wall_jump = false;
+can_grab = false;
 
 ///Misc
 max_hp = 6;
@@ -93,7 +93,8 @@ gx = 0;
 gy = 0;
 target_gx = 0;
 target_gy = 0;
-
+sh = sprite_get_height(sprite_index);
+sw = sprite_get_width(sprite_index)/2+5;
 </string>
           </argument>
         </arguments>
@@ -129,6 +130,7 @@ if (!old_ground &amp;&amp; ground)
 if (abs(previous_vsp) &gt; 1)
 {
     ///Hit the ground
+    /*
     image_index = 0;
     yscale = 1-bounce;
     xscale = 1+bounce;
@@ -137,8 +139,9 @@ if (abs(previous_vsp) &gt; 1)
         var xx = x+irandom_range(-5, 5);
         var yy = y-irandom(3);
         //var a = create_effect(xx, yy, sprDust, random_range(0.2, 0.4));
-        a.image_alpha = random_range(.5, 1);
+        //a.image_alpha = random_range(.5, 1);
     }
+    */
 }
 
 ///Keyboard &amp; controller input
@@ -341,6 +344,7 @@ if (can_move)
             if (ground)
             {
                 //Create dust effects
+                /*
                 repeat(4)
                 {
                     var xx = x+irandom_range(-5, 5);
@@ -348,6 +352,7 @@ if (can_move)
                     //var a = create_effect(xx, yy, sprDust, random_range(0.2, 0.4));
                     a.image_alpha = random_range(.5, 1);
                 }
+                */
             }
         }
     }
@@ -506,6 +511,37 @@ with (ranged_weapon)
 
 
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+
+if global.devmode == true {
+    draw_text(x+sw,y-sh,"HSP: " + string(hsp));
+    draw_text(x+sw,y-sh+20,"VSP: " + string(vsp));
+    draw_text(x+sw,y-sh+40,"STATE: " + string(state));
+    draw_text(x+sw,y-sh+60,"FACING: " + string(facing));
+}
 
 </string>
           </argument>

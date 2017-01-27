@@ -29,10 +29,9 @@
 
 // vars
 breakable = false;
-//stuck = ds_list_create();
+stuck = ds_list_create();
 on_top = ds_list_create();
 image_speed = 0;
-alarm[0] = 1;
 //piece_sprite = noone; //the sprite of the particle created when the block is destroyed
 
 // Movement vars
@@ -70,7 +69,22 @@ can_crush = false; //can we crush entities?
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Free list memory
+            <string>///Destroy any objects which are "stuck in" this block
+var size = ds_list_size(stuck);
+for (var i = 0; i &lt; size; i++)
+{
+    with (stuck[|i])
+    {
+        instance_destroy();
+    }
+}
+
+
+///Free list memory
+if (ds_exists(stuck, ds_type_list))
+{
+    ds_list_destroy(stuck);
+}
 if (ds_exists(on_top, ds_type_list))
 {
     ds_list_destroy(on_top);
@@ -194,10 +208,16 @@ if (hsp != 0 || vsp != 0)
           <argument>
             <kind>1</kind>
             <string>///Free list memory
+if (ds_exists(stuck, ds_type_list))
+{
+    ds_list_destroy(stuck);
+}
 if (ds_exists(on_top, ds_type_list))
 {
     ds_list_destroy(on_top);
 }
+
+
 </string>
           </argument>
         </arguments>

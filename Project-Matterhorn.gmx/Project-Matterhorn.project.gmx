@@ -23,6 +23,7 @@
       <sprite>sprites\ico_multi_level</sprite>
     </sprites>
     <sprite>sprites\s_block</sprite>
+    <sprite>sprites\s_slope</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -65,10 +66,14 @@
       <objects name="Solids">
         <object>objects\par_solid</object>
         <object>objects\o_block</object>
+        <object>objects\o_slope</object>
       </objects>
       <objects name="Semi Solids">
         <object>objects\o_semi_solid</object>
       </objects>
+    </objects>
+    <objects name="Interactions">
+      <object>objects\o_ladder</object>
     </objects>
   </objects>
   <rooms name="rooms">

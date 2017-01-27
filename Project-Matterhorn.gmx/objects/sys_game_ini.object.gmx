@@ -34,7 +34,7 @@
 scr_global_ini();
 
 // Load Settings
-scr_load_settings();
+//scr_load_settings();
 
 // INI Settings
 scr_settings_ini();
@@ -46,7 +46,7 @@ scr_gamepad_ini();
 scr_enum_ini();
 
 // Save Settings
-scr_save_settings();
+//scr_save_settings();
 
 ///Goto next room
 room_goto_next();

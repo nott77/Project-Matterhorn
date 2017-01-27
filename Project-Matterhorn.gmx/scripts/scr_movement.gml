@@ -73,12 +73,13 @@ if (collide)
             if (scr_check_collision(shsp, 0) && !scr_check_collision(shsp, -1))
             {
                 --y;
-                hsp *= 0.86; //reduce horizontal speed when going up a slope
+                hsp *= 0.9; //reduce horizontal speed when going up a slope
             }
             //Move down slope
             if (!scr_check_collision(shsp, 0) && !scr_check_collision(shsp, 1) && scr_check_collision(shsp, 2))
             {
                 ++y;
+                //hsp *= 1.05; // TEST DELETE, MAY BE BAD -Dustin!!!
             }
         }
         //Collide with walls
