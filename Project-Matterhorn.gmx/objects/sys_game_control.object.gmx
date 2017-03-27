@@ -8,6 +8,32 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DevMode INI
+
+// Guid INI
+gui_ini();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,31 +51,71 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Keys
+            <string>/// Devmode
 
-// Devmode
-if keyboard_check_pressed(ord('1')) {
-    global.devmode = !global.devmode;
-}
+// Toggles
+if keyboard_check_pressed(192) or keyboard_check_pressed(vk_f1){ global.devmodeUI = !global.devmodeUI; }
+if keyboard_check_pressed(vk_f2) { global.devmode = !global.devmode; };
+
+// Devmode Options
+if global.devmode == true {
+    show_debug_overlay(true);
+    // Camera Dev
+    if object_exists(camera_main) {
+        if mouse_wheel_up(){
+            camera_main.zoom -= 10;                
+        };
+        if mouse_wheel_down(){
+            camera_main.zoom += 10;                
+        };       
+    };   
+} else {
+   show_debug_overlay(false);
+};
+
+/// GUID
+if global.devmodeUI { gui_update(); }; 
+
+/// General Keys ***Delete/Change for final release!***
 
 // Game Restart
-if keyboard_check_pressed(ord('R')) {
-    game_restart();
-}
-
+if keyboard_check_pressed(ord('R')) { game_restart(); };
 // Quit
-if keyboard_check_pressed(vk_escape) {
-    game_end();
-}
+if keyboard_check_pressed(vk_escape) { game_end(); };  
+// Fullscreen
+if keyboard_check_pressed(ord('0')) { scr_fullscreen(); };  
+// Texture Interp
+if keyboard_check_pressed(ord('T')) { scr_interp(); }; 
+// Texture Interp
+if keyboard_check_pressed(ord('V')) { scr_vsync(); }; 
+// Anti Alias Toggles
+scr_AA();
 
-if global.devmode == true
-   {
-   show_debug_overlay(true);
-   }
-else
-   {
-   show_debug_overlay(false);
-   }
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>gui_destroy_gui(guid);
 </string>
           </argument>
         </arguments>
@@ -72,9 +138,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_text(10,10, round(fps_real))
-draw_text(10, 30, "Entities: "+string(instance_number(par_entity)));
-draw_text(10, 50, "Env: "+string(instance_number(par_env)));
+            <string>// Draw GUI
+draw_set_font(fnt_GUI);
+if global.devmodeUI { gui_draw(guid, global.display_w-gui_offset, 0); };
 </string>
           </argument>
         </arguments>

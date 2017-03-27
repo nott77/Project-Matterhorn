@@ -1,0 +1,43 @@
+
+<link rel="stylesheet" href="../stylesheets/iframe.css" /> <link rel="stylesheet" href="../stylesheets/monokai.css" /> <script src="../javascripts/prettify.js"></script> <script src="../javascripts/lang-basic.js"></script>
+
+<h1 class="title">ex_camera_set_smoothing</h1>
+<h2 class="subtitle">Sets the smoothing for the shake, scroll, zoom effects</h2>
+
+<h3 class="section">Syntax</h3>
+<code class="syntax">
+	ex_camera_set_smoothing(cameraHandle, enable)
+</code>
+
+<table class="arguments">
+	<thead>
+		<tr>
+			<th>Argument</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>cameraHandle</td>
+			<td>The camera handle</td>
+		</tr>
+		<tr>
+			<td>enable</td>
+			<td>Whether to enable the smoothing or not</td>
+		</tr>
+	</tbody>
+</table>
+
+<small class="returns"><strong>Returns</strong> nothing</small>
+
+<h3 class="section">Description</h3>
+<p class="description">By default exCamera allows for smooth effects for zoom, scroll &amp; shake. This is done internally by not rounding the view coordinates, however in some cases, there might be an issue with repeating textures such as tiled backgrounds and sprites. Sometimes small seams between textures might show up as the view zooms in or out, and those textures will have to be drawn manually. You may instead use this function to set the smoothing to false and you will just compromise a bit on the smooth shake, scroll, zoom effects but your graphics won't show any seams.</p>
+
+<h3 class="section">Example</h3>
+<pre class="prettyprint lang-c">
+//Disable the smoothing (aka round the view coordinates)
+ex_camera_set_smoothing(global._camera, false);
+</pre>
+
+<h3 class="section">Minimum Supported Version</h3>
+<small class="min-version">exCamera 1.0.4</small> <script>prettyPrint();</script>

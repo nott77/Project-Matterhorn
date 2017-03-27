@@ -28,6 +28,8 @@
             <string>/// Player INI
 event_inherited();
 
+tempcolor = c_red;
+
 //Set general variables
 fall_damage = 0;
 gold = 0;
@@ -65,27 +67,28 @@ pad_aim_axisv = gp_axislv;
 pad_shoot = gp_face2;
 pad_attack = gp_face3;
 
-///// Set Move variables
-move_speed = 3;
-
+///Set variables
+move_speed = 5; // 2
 ///Friction &amp; gravity
-air_frict = 0.08;
-ground_frict = 0.2;
-grav = 0.2;
+air_frict = 0.08; //.08
+ground_frict = 0.25; //.2
+grav = .4; //.2
 grav_slide = 0.08;
-slide_speed = 1;
-
+slide_speed = 1; //1
 ///Acceleration
-air_acc = 0.15;
+air_acc = 0.25; //.15orig .3is decent
 ground_acc = 0.3;
-
-///Jumping!
-jump_height = 3.6;
-djump_height = 3;
+///Jumping
+jump_height = 10; //3.6
+djump_height = 6.9;
 jumps_max = 2;
-wall_jump = false;
-can_grab = false;
-
+wall_jump = true;
+can_grab = true; //true
+///Weapons
+//melee_weapon = instance_create(0, 0, objAxe);
+//melee_weapon.parent = id;
+//ranged_weapon = instance_create(0, 0, objBow);
+//ranged_weapon.parent = id;
 ///Misc
 max_hp = 6;
 hp = max_hp;
@@ -95,12 +98,21 @@ target_gx = 0;
 target_gy = 0;
 sh = sprite_get_height(sprite_index);
 sw = sprite_get_width(sprite_index)/2+5;
+
+xx1 = bbox_left;
+yy1 = bbox_top;
+xx2 = bbox_right;
+yy2 = bbox_bottom;
+rad = 20
+
+// INI CAMERA
+instance_create(x,y,camera_main);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -123,12 +135,31 @@ sw = sprite_get_width(sprite_index)/2+5;
 var old_ground = ground;
 var old_cling = (cling_left || cling_right);
 
+xx1 = bbox_left-rad;
+yy1 = bbox_top;
+xx2 = bbox_right+rad;
+yy2 = bbox_bottom;
+
+if collision_rectangle(xx1, yy1, xx2, yy2, o_block_pushable, false, true) {
+    tempcolor = c_blue;
+    if gamepad_button_check(0, gp_shoulderr) {
+        with o_block_pushable {
+            hsp += o_player.hsp 
+        }
+    } else {
+        o_block_pushable.hsp = 0;
+        
+    }    
+} else {
+    tempcolor = c_red;
+    o_block_pushable.hsp = 0;
+}
+
 event_inherited();
 
 ///Check if states have changed
 if (!old_ground &amp;&amp; ground)
-if (abs(previous_vsp) &gt; 1)
-{
+if (abs(previous_vsp) &gt; 1) {
     ///Hit the ground
     /*
     image_index = 0;
@@ -195,10 +226,9 @@ else
 }
 
 //Movement using controller
-if (!kLeft &amp;&amp; !kRight &amp;&amp; !kUp &amp;&amp; !kDown)
-{
-    if (pad_move_axish == noone || pad_move_axisv == noone) //move using buttons
-    {
+if (!kLeft &amp;&amp; !kRight &amp;&amp; !kUp &amp;&amp; !kDown) {
+    //move using buttons
+    if (pad_move_axish == noone || pad_move_axisv == noone)  {
         kLeft = keyboard_check(key_left);
         kRight = keyboard_check(key_right);
         kUp = keyboard_check(key_up);
@@ -221,8 +251,8 @@ if (!kLeft &amp;&amp; !kRight &amp;&amp; !kUp &amp;&amp; !kDown)
 }
 
 //Shooting using a controller
-if (!kAimLeft &amp;&amp; !kAimRight &amp;&amp; !kAimUp &amp;&amp; !kAimDown)
-{
+if (!kAimLeft &amp;&amp; !kAimRight &amp;&amp; !kAimUp &amp;&amp; !kAimDown) {
+
     var axish = gamepad_axis_value(player_number, pad_aim_axish);
     var axisv = gamepad_axis_value(player_number, pad_aim_axisv);
     var axis_aiming = (axish != 0 || axisv != 0); //is the stick being used?
@@ -506,12 +536,6 @@ with (ranged_weapon)
 
 //Check if we can still grab ledges
 //can_grab = (can_melee &amp;&amp; can_ranged);
-
-
-
-
-
-
 </string>
           </argument>
         </arguments>
@@ -534,13 +558,19 @@ with (ranged_weapon)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>event_inherited();
 
-if global.devmode == true {
+//draw_self();
+
+if global.devmodeUI == true {
     draw_text(x+sw,y-sh,"HSP: " + string(hsp));
     draw_text(x+sw,y-sh+20,"VSP: " + string(vsp));
     draw_text(x+sw,y-sh+40,"STATE: " + string(state));
     draw_text(x+sw,y-sh+60,"FACING: " + string(facing));
+    //draw_text(x+sw,y-sh+80,"yay: " + string(yay));
+    draw_set_color(tempcolor);
+    draw_rectangle(xx1, yy1, xx2, yy2, true);
+    draw_set_color(c_white);
 }
 
 </string>
