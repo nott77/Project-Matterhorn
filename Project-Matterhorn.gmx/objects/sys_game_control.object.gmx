@@ -140,7 +140,7 @@ scr_AA();
             <kind>1</kind>
             <string>// Draw GUI
 draw_set_font(fnt_GUI);
-if global.devmodeUI { gui_draw(guid, global.display_w-gui_offset, 0); };
+if global.devmodeUI { gui_draw(guid, global.screen_w-gui_offset, 0); };
 </string>
           </argument>
         </arguments>

@@ -153,9 +153,12 @@ if (hsp != 0 || vsp != 0)
             }
             else
             {
-                hsp *= -1;
+                if !par_pushable {
+                    hsp *= -1;
+                }
                 collide_x = true;
                 break;
+                
             }
         }
     }
@@ -174,7 +177,9 @@ if (hsp != 0 || vsp != 0)
             }
             else
             {
-                vsp *= -1;
+                if !par_pushable {
+                    vsp *= -1;
+                }
                 collide_y = true;
                 break;
             }

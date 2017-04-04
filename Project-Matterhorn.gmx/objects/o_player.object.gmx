@@ -103,7 +103,7 @@ xx1 = bbox_left;
 yy1 = bbox_top;
 xx2 = bbox_right;
 yy2 = bbox_bottom;
-rad = 20
+rad = 10;
 
 // INI CAMERA
 instance_create(x,y,camera_main);
@@ -136,23 +136,18 @@ var old_ground = ground;
 var old_cling = (cling_left || cling_right);
 
 xx1 = bbox_left-rad;
-yy1 = bbox_top;
+yy1 = bbox_top+rad;
 xx2 = bbox_right+rad;
-yy2 = bbox_bottom;
+yy2 = bbox_bottom-rad;
 
-if collision_rectangle(xx1, yy1, xx2, yy2, o_block_pushable, false, true) {
+if collision_rectangle(xx1, yy1, xx2, yy2, par_pushable, false, true) {
     tempcolor = c_blue;
-    if gamepad_button_check(0, gp_shoulderr) {
-        with o_block_pushable {
-            hsp += o_player.hsp 
-        }
-    } else {
-        o_block_pushable.hsp = 0;
-        
-    }    
+    with par_pushable {
+        hsp += o_player.hsp; 
+    }  
 } else {
     tempcolor = c_red;
-    o_block_pushable.hsp = 0;
+    par_pushable.hsp = 0;
 }
 
 event_inherited();

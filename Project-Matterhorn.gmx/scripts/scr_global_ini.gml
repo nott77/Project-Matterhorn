@@ -11,8 +11,8 @@ global.current_date = 0;
 ///// Video Globals
 global.display_w = display_get_width();
 global.display_h = display_get_height(); 
-global.screen_w = 1920;
-global.screen_h = 1080;
+global.screen_w = global.display_w;
+global.screen_h = global.display_h;
 //global.aspect_ratio = global.screen_w / global.screen_h;
 //global.aspect_ratio_ideal = 1920/1080;
 global.fullscreen = true;

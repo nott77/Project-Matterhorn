@@ -11,7 +11,7 @@ gui_set_value(guid, 'Texture Interp', global.texture_interp);
 gui_set_value(guid, 'Vsync', global.vsync);
 
 // Interact with gui
-gui_check(guid, global.display_w-gui_offset, 0, mouse_x-view_xview, mouse_y-view_yview);
+gui_check(guid, global.display_w-gui_offset, 0, mouse_x-view_xview[0], mouse_y-view_yview[0]);
 
 // Update values
 

@@ -1641,8 +1641,11 @@
       <objects name="Solids">
         <object>objects\par_solid</object>
         <object>objects\o_block</object>
-        <object>objects\o_block_pushable</object>
         <object>objects\o_slope</object>
+        <objects name="Pushable">
+          <object>objects\par_pushable</object>
+          <object>objects\o_push_block</object>
+        </objects>
       </objects>
       <objects name="Semi Solids">
         <object>objects\o_semi_solid</object>

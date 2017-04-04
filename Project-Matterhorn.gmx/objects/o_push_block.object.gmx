@@ -3,9 +3,9 @@
   <spriteName>s_block_push</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>100</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>par_solid</parentName>
+  <parentName>par_pushable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,32 +28,10 @@
             <string>event_inherited();
 
 ///Set up
+can_crush = false;
+target = o_player;
 hsp = 0;
-hsp_max = 5;
-can_crush = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="o_player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hsp +=1;
+vsp = 0;
 </string>
           </argument>
         </arguments>

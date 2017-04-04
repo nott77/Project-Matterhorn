@@ -23,14 +23,14 @@ texture_set_interpolation(global.texture_interp);
 window_set_fullscreen(global.fullscreen);
 
 // Set App Surface
-//surface_resize(application_surface,global.screen_w,global.screen_h)
+surface_resize(application_surface,global.screen_w,global.screen_h)
 
 // Set View
-//view_wview[0] = global.screen_w;
-//view_hview[0] = global.screen_h;
+view_wview[0] = global.screen_w;
+view_hview[0] = global.screen_h;
 
 // Set GUI
-//display_set_gui_size(global.screen_w,global.screen_h)
+display_set_gui_size(global.screen_w,global.screen_h)
 
 
 /////////////////

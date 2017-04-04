@@ -61,7 +61,7 @@
     <instance objName="o_block" x="0" y="1152" name="inst_F550828B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_block" x="0" y="800" name="inst_69A05C63" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="o_slope" x="1280" y="1088" name="inst_B04FB66E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_block_pushable" x="288" y="1088" name="inst_4B1D09C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_push_block" x="320" y="1088" name="inst_830C377D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
